@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Health System API</h1>
+        
+        <h2>Endpoints</h2>
+        
+        <h3>Person</h3>
+        <ul>
+            <p>@GET</p>
+            <li>...rest/people - get all People</li>
+            <p>@GET</p>
+            <li>...rest/people/byID/{PersonID} - get Person by ID</li>
+            <p>@GET</p>
+            <li>...rest/people/byName/{PersonName} - get Person by Name</li>
+            <p>@POST</p>
+            <li>...rest/people - add Person</li>
+            <p>Example JSON body:</p>
+            <pre>{
+        "name": "testPerson",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "test",
+        "id": "Per01"
+}</pre>
+            <p>@PUT</p>
+            <li>...rest/people/{PersonID} - update Person</li>
+            <p>Example JSON body:</p>
+            <pre>{
+        "name": "testPerson",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "testUpdated",
+        "id": "Per01"
+}</pre>
+            <p>@DELETE</p>
+            <li>...rest/people/{PersonID} - delete Person by ID</li>
+        </ul>
+        
+        <h3>Patient</h3>
+        <ul>
+            <p>@GET</p>
+            <li>...rest/patients - get all Patients</li>
+            <p>@GET</p>
+            <li>...rest/patients/byID/{AppointmentID} - get Patient by ID</li>
+            <p>@GET</p>
+            <li>...rest/patients/byPatient/{PatientID} - get Patient by Name</li>
+            <p>@POST</p>
+            <li>...rest/patients - add Patient</li>
+            <p>Example JSON body:</p>
+            <pre>{
+        "name": "testPatient",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "test",
+        "current_Health_Status": "test",
+        "hospital": "A",
+        "id": "Pat01"
+}</pre>
+            <p>@PUT</p>
+            <li>...rest/patients/{PatientID} - update Patient</li>
+            <p>Example JSON body:</p>
+            <pre>{
+        "name": "testPatient",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "test",
+        "current_Health_Status": "test",
+        "hospital": "A",
+        "id": "Pat01"
+}</pre>
+            <p>@DELETE</p>
+            <li>...rest/appointments/{PatientID} - delete Patient by ID</li>
+        </ul>
+        
+        <h3>Doctor</h3>
+        <ul>
+            <p>@GET</p>
+            <li>...rest/doctors - get all Doctors</li>
+            <p>@GET</p>
+            <li>...rest/doctors/byID/{DoctorID} - get Doctor by ID</li>
+            <p>@GET</p>
+            <li>...rest/doctors/byName/{DoctorName} - get Doctor by Name</li>
+            <p>@Post</p>
+            <li>...rest/doctors - add appointment</li>
+            <p>Example JSON body:</p>
+            <pre>{
+        "name": "testDoctor",
+        "age": 35,
+        "contactNumber": 123,
+        "address": "testAddress",
+        "specialization": "test",
+        "department": "test",
+        "id": "Doc01"
+}</pre>
+            <p>@PUT</p>
+            <li>...rest/doctors/{DoctorID} - Update Doctor</li>
+            <p>Example JSON body:</p>
+            <pre>{
+        "name": "testDoctor",
+        "age": 35,
+        "contactNumber": 123456,
+        "address": "testUpdated",
+        "specialization": "testUpdated",
+        "department": "testUpdated",
+        "id": "Doc01"
+}</pre>
+            <p>@Delete</p>
+            <li>...rest/doctors/{DoctorID} - delete Doctor by ID</li>
+        </ul>
+        
+        <h3>Medical Records</h3>
+        <ul>
+            <p>@GET</p>
+            <li>...rest/medical_records - get all Medical Records</li>
+            <p>@GET</p>
+            <li>...rest/medical_records/{recordID} - get Medical Records by ID</li>
+            <p>@GET</p>
+            <li>...rest/medical_records/byPatient/{PatientID} - get Medical Records by Patient ID</li>
+            <p>@Post</p>
+            <li>...rest/medical_records/{PatientID} - add Medical record belonging to a existing patient</li>
+            <p>Example JSON body:</p>
+            <pre>{
+  "medical_RecordID": "MR123456",
+  "diagnosesAndtreatments": {
+    "diagnosis1": "treatment1",
+    "diagnosis2": "treatment2"
+  },
+  "currentMedications": [
+    "Medication1",
+    "Medication2"
+  ],
+  "allergies": [
+    "Allergy1",
+    "Allergy2"
+  ],
+  "medicalConditions": [
+    "Condition1",
+    "Condition2"
+  ]
+}</pre>
+            <p>@PUT</p>
+            <li>...rest/medical_records/{recordID} - Update Medical record by ID</li>
+            <p>Example JSON body:</p>
+            <pre>{
+  "medical_RecordID": "MR123456",
+  "diagnosesAndtreatments": {
+    "diagnosis1": "treatment1Updated",
+    "diagnosis2": "treatment2Updated"
+  },
+  "currentMedications": [
+    "Medication1Updated",
+    "Medication2"
+  ],
+  "allergies": [
+    "Allergy1Updated",
+    "Allergy2"
+  ],
+  "medicalConditions": [
+    "Condition1Updated",
+    "Condition2"
+  ]
+}</pre>
+            <p>@Delete</p>
+            <li>...rest/medical_records/{recordID} - Update Medical record by ID</li>
+        </ul>
+        
+        <h3>Appointment</h3>
+        <ul>
+            <p>@GET</p>
+            <li>...rest/appointments - get all appointments</li>
+            <p>@GET</p>
+            <li>...rest/appointments/byID/{AppointmentID} - get appointment by ID</li>
+            <p>@GET</p>
+            <li>...rest/appointments/byPatient/{PatientID} - get appointment by patient ID</li>
+            <p>@GET</p>
+            <li>...rest/appointments/byDoctor/{DoctorID} - get appointment by doctor ID</li>
+            <p>@POST</p>
+            <li>...rest/appointments - add appointment</li>
+            <p>Example JSON body:</p>
+            <pre>{
+  "appointmentID": "A01",
+  "doctor": {
+        "name": "testDoctor",
+        "age": 35,
+        "contactNumber": 123,
+        "address": "testAddress",
+        "specialization": "test",
+        "department": "test",
+        "id": "Doc01"
+    },
+    "patient": {
+        "name": "testPatient",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "test",
+        "medical_record": {
+            "medical_RecordID": "R01",
+            "diagnosesAndtreatments": {
+                "diagnosis1": "Treatment1",
+                "diagnosis2": "Treatment2"
+            },
+            "currentMedications": [
+                "Medication1",
+                "Medication2"
+            ],
+            "allergies": [
+                "Allergy1",
+                "Allergy2"
+            ],
+            "medicalConditions": [
+                "Condition1",
+                "Condition2"
+            ]
+        },
+        "current_Health_Status": "test",
+        "hospital": "A",
+        "id": "Pat01"
+    },
+  "date": "2024-06-10",
+  "time": "10:30:00.0"
+}</pre>
+            <p>@PUT</p>
+            <li>...rest/appointments/{AppointmentID} - Update Appointment by ID</li>
+            <p>Example JSON body:</p>
+            <pre>{
+  "appointmentID": "A01",
+  "doctor": {
+        "name": "testDoctor",
+        "age": 35,
+        "contactNumber": 123,
+        "address": "testAddress",
+        "specialization": "test",
+        "department": "test",
+        "id": "Doc01"
+    },
+    "patient": {
+        "name": "testPatient",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "test",
+        "medical_record": {
+            "medical_RecordID": "R01",
+            "diagnosesAndtreatments": {
+                "diagnosis1": "Treatment1",
+                "diagnosis2": "Treatment2"
+            },
+            "currentMedications": [
+                "Medication1",
+                "Medication2"
+            ],
+            "allergies": [
+                "Allergy1",
+                "Allergy2"
+            ],
+            "medicalConditions": [
+                "Condition1",
+                "Condition2"
+            ]
+        },
+        "current_Health_Status": "test",
+        "hospital": "A",
+        "id": "Pat01"
+    },
+  "date": "2024-06-15",
+  "time": "10:30:00"
+}</pre>
+            <p>@DELETE</p>
+            <li>...rest/appointments/{AppointmentID} - Delete Appointment by ID</li>
+        </ul>
+        
+        <h3>Billing</h3>
+        <ul>
+            <p>@GET</p>
+            <li>...rest/billing - get all Bills</li>
+            <p>@GET</p>
+            <li>...rest/billing/byID/{BillingID} - get Bill by ID</li>
+            <p>@GET</p>
+            <li>...rest/billing/byPatient/{PatientID} - get Bill by patient ID</li>
+            <p>@GET</p>
+            <li>...rest/billing/byDoctor/{DoctorID} - get Bill by doctor ID</li>
+            <p>@POST</p>
+            <li>...rest/billing - add Bill</li>
+            <p>Example JSON body:</p>
+            <pre>{
+  "billingID": "B123456",
+  "doctor": {
+        "name": "testDoctor",
+        "age": 35,
+        "contactNumber": 123,
+        "address": "testAddress",
+        "specialization": "test",
+        "department": "test",
+        "id": "Doc01"
+    },
+    "patient": {
+        "name": "testPatient",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "test",
+        "medical_record": {
+            "medical_RecordID": "R01",
+            "diagnosesAndtreatments": {
+                "diagnosis1": "Treatment1",
+                "diagnosis2": "Treatment2"
+            },
+            "currentMedications": [
+                "Medication1",
+                "Medication2"
+            ],
+            "allergies": [
+                "Allergy1",
+                "Allergy2"
+            ],
+            "medicalConditions": [
+                "Condition1",
+                "Condition2"
+            ]
+        },
+        "current_Health_Status": "test",
+        "hospital": "A",
+        "id": "Pat01"
+    },
+  "date": "2024-05-08",
+  "time": "10:00:00",
+  "status": "UnPaid",
+  "amount": 1500
+}</pre>
+            <p>@PUT</p>
+            <li>...rest/billing/{BillingID} - Delete Bill by ID</li>
+            <p>Example JSON body:</p>
+            <pre>{
+  "billingID": "B123456",
+  "doctor": {
+        "name": "testDoctor",
+        "age": 35,
+        "contactNumber": 123,
+        "address": "testAddress",
+        "specialization": "test",
+        "department": "test",
+        "id": "Doc01"
+    },
+    "patient": {
+        "name": "testPatient",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "test",
+        "medical_record": {
+            "medical_RecordID": "R01",
+            "diagnosesAndtreatments": {
+                "diagnosis1": "Treatment1",
+                "diagnosis2": "Treatment2"
+            },
+            "currentMedications": [
+                "Medication1",
+                "Medication2"
+            ],
+            "allergies": [
+                "Allergy1",
+                "Allergy2"
+            ],
+            "medicalConditions": [
+                "Condition1",
+                "Condition2"
+            ]
+        },
+        "current_Health_Status": "test",
+        "hospital": "A",
+        "id": "Pat01"
+    },
+  "date": "2024-05-08",
+  "time": "10:00:00",
+  "status": "Paid",
+  "amount": 1500
+}</pre>
+            <p>@DELETE</p>
+            <li>...rest/billing/{BillingID} - Update Bill by ID</li>
+        </ul>
+        
+        <h3>Prescriptions</h3>
+        <ul>
+            <p>@GET</p>
+            <li>...rest/prescriptions - get all Prescriptions</li>
+            <p>@GET</p>
+            <li>...rest/prescriptions/byID/{PrescriptionID} - get Prescription by ID</li>
+            <p>@GET</p>
+            <li>...rest/prescriptions/byPatient/{PatientID} - get Prescription by patient ID</li>
+            <p>@GET</p>
+            <li>...rest/prescriptions/byDoctor/{DoctorID} - get Prescription by doctor ID</li>
+            <p>@POST</p>
+            <li>...rest/prescriptions - add Prescription</li>
+            <p>Example JSON body:</p>
+            <pre>{
+  "billingID": "B123456",
+  "doctor": {
+        "name": "testDoctor",
+        "age": 35,
+        "contactNumber": 123,
+        "address": "testAddress",
+        "specialization": "test",
+        "department": "test",
+        "id": "Doc01"
+    },
+    "patient": {
+        "name": "testPatient",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "test",
+        "medical_record": {
+            "medical_RecordID": "R01",
+            "diagnosesAndtreatments": {
+                "diagnosis1": "Treatment1",
+                "diagnosis2": "Treatment2"
+            },
+            "currentMedications": [
+                "Medication1",
+                "Medication2"
+            ],
+            "allergies": [
+                "Allergy1",
+                "Allergy2"
+            ],
+            "medicalConditions": [
+                "Condition1",
+                "Condition2"
+            ]
+        },
+        "current_Health_Status": "test",
+        "hospital": "A",
+        "id": "Pat01"
+    },
+  "date": "2024-05-08",
+  "time": "10:00:00",
+  "status": "UnPaid",
+  "amount": 1500
+}</pre>
+            <p>@PUT</p>
+            <li>...rest/prescriptions/{PrescriptionID} - Update Prescriptions by ID</li>
+            <p>Example JSON body:</p>
+            <pre>{
+  "billingID": "B123456",
+  "doctor": {
+        "name": "testDoctor",
+        "age": 35,
+        "contactNumber": 123,
+        "address": "testAddress",
+        "specialization": "test",
+        "department": "test",
+        "id": "Doc01"
+    },
+    "patient": {
+        "name": "testPatient",
+        "age": 18,
+        "contactNumber": 456,
+        "address": "test",
+        "medical_record": {
+            "medical_RecordID": "R01",
+            "diagnosesAndtreatments": {
+                "diagnosis1": "Treatment1",
+                "diagnosis2": "Treatment2"
+            },
+            "currentMedications": [
+                "Medication1",
+                "Medication2"
+            ],
+            "allergies": [
+                "Allergy1",
+                "Allergy2"
+            ],
+            "medicalConditions": [
+                "Condition1",
+                "Condition2"
+            ]
+        },
+        "current_Health_Status": "test",
+        "hospital": "A",
+        "id": "Pat01"
+    },
+  "date": "2024-05-08",
+  "time": "10:00:00",
+  "status": "Paid",
+  "amount": 1500
+}</pre>
+            <p>@DELETE</p>
+            <li>...rest/prescriptions/{PrescriptionID} - Delete Prescriptions by ID</li>
+        </ul>
+        
+    </body>
+</html>
